@@ -1,12 +1,16 @@
 import { Element, render, setAttrs } from './element'
 
-let allPatches
+let allPatches // 所有补丁包
 let index = 0
+/**
+ * 将补丁打到真实DOM节点上
+ * @param {*} node 真实DOM节点
+ * @param {*} patches 补丁对象
+ */
 function patch(node, patches) {
   allPatches = patches
   walk(node)
 }
-
 function walk(node) {
   let currentPatches = allPatches[index++]
   let childNodes = node.childNodes
